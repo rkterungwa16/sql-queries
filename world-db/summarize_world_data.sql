@@ -125,10 +125,18 @@ FROM world
 WHERE name
 IN ('Estonia', 'Latvia', 'Lithuania')
 
+/*
+=======================================================================================================
+*/
+
 -- For each continent show the number of countries
 SELECT continent, COUNT(name)
 FROM world
 GROUP BY continent
+
+/*
+=======================================================================================================
+*/
 
 -- For each continent show the total population
 SELECT continent, SUM(population)
