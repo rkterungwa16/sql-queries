@@ -59,7 +59,7 @@ CREATE TABLE carts (
 
 -- If you delete a category, then products having that category should be deleted
 CREATE TABLE products (
-  id INT NOT NULL,
+  id INT AUTO_INCREMENT,
   category_id INT NOT NULL,
   name VARCHAR(45),
   description VARCHAR(255),
@@ -82,3 +82,34 @@ CREATE TABLE cart_items (
   FOREIGN KEY (carts_id) REFERENCES carts (customer_id) ON DELETE CASCADE,
   FOREIGN KEY (products_id) REFERENCES products (id) ON DELETE CASCADE
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- List all Customers
+SELECT * FROM customers;
+
+-- Find customer whose email is terungwakombol@gmail.com
+CREATE VIEW find_customer_id
+AS
+SELECT id FROM customers
+WHERE email = 'terungwakombol@gmail.com';
+
+CREATE VIEW find_category_id
+AS
+SELECT id FROM categories
+WHERE name = 'phones & tablets';
+
+-- Look into Stored Procedures, Functions and Variables
+-- INSERT INTO products (category_id, name, description, stock_quantity)
+-- VALUES (
+--   SELECT id FROM find_category_id,
+--   'Galaxy A30',
+--   '6.4-Inch (4GB RAM, 64GB ROM) Android 9.0 Pie, (16MP + 5MP) + 16MP 4G LTE Dual Sim Smartphone - Black',
+--   10);
+
+--  - Honor/glory Play
+--  - IPhone 7plus
+--  - Mate23 Smart Phone
+--  - Xiaomi Redmi Note 7
+--  - S11 Lite
+--  - HOT 7 Pro
+--  - Galaxy A20
+--  - Millet Redmi Note7pro
