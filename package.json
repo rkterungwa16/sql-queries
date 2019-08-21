@@ -1,0 +1,27 @@
+{
+  "name": "sql-queries",
+  "version": "1.0.0",
+  "description": "nodejs mysql",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rkterungwa16/sql-queries.git"
+  },
+  "keywords": [
+    "nodejs",
+    "mysql"
+  ],
+  "author": "Terungwa Kombol",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rkterungwa16/sql-queries/issues"
+  },
+  "homepage": "https://github.com/rkterungwa16/sql-queries#readme",
+  "dependencies": {
+    "dotenv": "^8.1.0",
+    "mysql": "^2.17.1"
+  }
+}

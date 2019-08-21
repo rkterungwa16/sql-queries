@@ -15,17 +15,17 @@ CREATE TABLE users (
 -- One user can be of different types
 -- One type can have different users
 
-CREATE TABLE user_roles (
+CREATE TABLE user_types (
     users_id INT NOT NULL,
-    roles_id INT NOT NULL,
+    types_id INT NOT NULL,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    PRIMARY KEY (users_id, roles_id),
+    PRIMARY KEY (users_id, types_id),
     FOREIGN KEY (users_id) REFERENCES users (id) ON DELETE RESTRICT ON UPDATE CASCADE,
-    FOREIGN KEY (roles_id) REFERENCES roles (id) ON DELETE RESTRICT ON UPDATE CASCADE
+    FOREIGN KEY (types_id) REFERENCES types (id) ON DELETE RESTRICT ON UPDATE CASCADE
 )
 
-CREATE TABLE roles (
+CREATE TABLE types (
     id INT NOT NULL AUTO_INCREMENT,
     name VARCHAR(45),
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,

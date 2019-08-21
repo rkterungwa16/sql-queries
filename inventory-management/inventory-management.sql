@@ -2,8 +2,23 @@ DROP SCHEMA IF EXISTS cinventory_management;
 CREATE SCHEMA inventory_management;
 USE inventory_management;
 
+-- a user can have only one address
+-- an address can only belong to one user
+-- since an address only belongs to one user, foreign key is user id
+CREATE TABLE addresses (
+    id INT NOT NULL,
+    local_govt VARCHAR(45),
+    state VARCHAR(45),
+    street VARCHAR(45),
+    country VARCHAR(45),
+    zip_code VARCHAR(45),
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 CREATE TABLE users (
   id INT NOT NULL AUTO_INCREMENT,
+  address_id INT,
   phone_number VARCHAR(45),
   email VARCHAR(255),
   password VARCHAR(8),
@@ -18,6 +33,7 @@ CREATE TABLE users (
 -- since profile belongs to a user. foreign key is user_id
 CREATE TABLE profiles (
   user_id INT NOT NULL,
+  address_id INT,
   first_name VARCHAR(45),
   last_name VARCHAR(45),
   brand_name VARCHAR(45),
@@ -25,21 +41,7 @@ CREATE TABLE profiles (
   updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY  (id),
   FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE ON UPDATE CASCADE,
-)ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- a user can have only one address
--- an address can only belong to one user
--- since an address only belongs to one user, foreign key is user id
-CREATE TABLE addresses (
-    user_id INT NOT NULL,
-    local_govt VARCHAR(45),
-    state VARCHAR(45),
-    street VARCHAR(45),
-    country VARCHAR(45),
-    zip_code VARCHAR(45),
-    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    PRIMARY KEY (user_id),
-    FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE ON UPDATE CASCADE
+  FOREIGN KEY (addresses_id) REFERENCES addresses (id) ON DELETE RESTRICT ON UPDATE CASCADE
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- categories contains different products
