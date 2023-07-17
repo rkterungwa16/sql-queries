@@ -22,6 +22,6 @@
   "homepage": "https://github.com/rkterungwa16/sql-queries#readme",
   "dependencies": {
     "dotenv": "^8.1.0",
-    "mysql": "^2.17.1"
+    "mysql": "^2.18.0"
   }
 }
